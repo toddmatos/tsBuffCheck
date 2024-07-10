@@ -1,7 +1,7 @@
 local frame = CreateFrame("Frame", "buffReminder", UIParent)
 frame:SetWidth(32)
 frame:SetHeight(32)
-frame:SetPoint("CENTER", UIParent, "CENTER", 0, 100)
+frame:SetPoint("CENTER", UIParent, "CENTER", 0, 50)
 frame:Hide()
 
 -- Define class buffs
