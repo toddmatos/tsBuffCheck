@@ -1,21 +1,3 @@
-Your Lua code for World of Warcraft 1.12 looks generally well-structured, but there are a few issues and improvements that can be made for better performance and reliability. Here are some points to consider:
-
-### 1. `arg1` and `event` Variables
-In WoW 1.12, `arg1` and `event` are global variables, but in later versions, they are passed as arguments to the event handler function. To ensure compatibility and avoid potential issues, you should explicitly declare them as parameters in your event handler function.
-
-### 2. `UnitBuff` API
-The `UnitBuff` function in WoW 1.12 returns multiple values, including the texture path. You should adjust your code to handle this correctly.
-
-### 3. Flashing Logic
-The `OnUpdate` script uses `arg1`, which is not defined in the function scope. You should pass `elapsed` as an argument to the function.
-
-### 4. Frame Visibility
-You are hiding the frame inside the loop, which might cause it to flicker. It’s better to determine the frame visibility after checking all buffs.
-
-### Improved Code
-Here’s an improved version of your code:
-
-```lua
 local frame = CreateFrame("Frame", "buffReminder", UIParent)
 frame:SetWidth(32)
 frame:SetHeight(32)
@@ -117,8 +99,8 @@ end)
 
 -- Initial check
 checkBuff()
-```
 
+--[[
 ### Key Changes:
 1. **Event Handler Parameters**: Added `self`, `event`, and `arg1` as parameters to the event handler function.
 2. **UnitBuff Handling**: Adjusted the `UnitBuff` loop to correctly handle the returned values.
@@ -126,3 +108,5 @@ checkBuff()
 4. **OnUpdate Script**: Corrected the `OnUpdate` script to use `elapsed` instead of `arg1`.
 
 These changes should make your code more robust and compatible with WoW 1.12.
+]]--
+
